@@ -1,17 +1,23 @@
 # Declare package 'Bob'
 package Bob;
 
-use strict;
 use warnings;
-use Exporter 'import';
+use Switch;
 
 our @EXPORT_OK = qw(hey);
 
 sub hey {
-    my ($msg) = @_;
-    return print("Hey\n");   # Replace this with your own code to pass the tests.
+
+my ($question) = @_;
+
+switch ($question) {
+    case "How are you?"		{ print "Sure\n" }   
+    case /^\p{Uppercase}+$/     { print "Whoa, chill out!\n" }   
+    case "" 			{ print "Fine. Be that way!\n" }
+    case /\?+$/                 { print "Calm down, I know what I'm doing!\n" }
+    else 	 		{ print "Whatever.\n" }
 }
 
-say "Takeda";
+}
 
 hey(@ARGV);
